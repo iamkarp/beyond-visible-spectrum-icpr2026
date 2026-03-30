@@ -1,0 +1,20 @@
+# Dataset and output (too large for git)
+train/
+val/
+output/
+
+# Claude Code internal
+CLAUDE.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
