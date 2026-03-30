@@ -372,9 +372,9 @@ The winning submission achieves macro F1 of 0.6993 and accuracy of 0.7083, besti
 
 [17] Ojala, T., Pietikäinen, M., and Mäenpää, T. (2002). Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 24(7), 971–987.
 
-[18] Hong, D., Gao, L., Yao, J., Zhang, B., Plaza, A., and Chanussot, J. (2020). Graph Convolutional Networks for Hyperspectral Image Classification. *IEEE Transactions on Geoscience and Remote Sensing*, 59(1), 377–393.
+[18] Hong, D., Gao, L., Yao, J., Zhang, B., Plaza, A., and Chanussot, J. (2021). Graph Convolutional Networks for Hyperspectral Image Classification. *IEEE Transactions on Geoscience and Remote Sensing*, 59(7), 5966–5978.
 
-[19] Zhang, M., Li, W., and Du, Q. (2017). Diverse region-based CNN for hyperspectral image classification. *IEEE Transactions on Image Processing*, 27(6), 2623–2634.
+[19] Zhang, M., Li, W., and Du, Q. (2018). Diverse region-based CNN for hyperspectral image classification. *IEEE Transactions on Image Processing*, 27(6), 2623–2634.
 
 [20] Gitelson, A.A., Kaufman, Y.J., and Merzlyak, M.N. (1996). Use of a green channel in remote sensing of global vegetation from EOS-MODIS. *Remote Sensing of Environment*, 58(3), 289–298.
 

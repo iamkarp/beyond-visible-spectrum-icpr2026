@@ -12,6 +12,7 @@ Features:
 - HS: PCA components, spectral derivatives, band statistics
 """
 
+import argparse
 import os
 import re
 import warnings
@@ -32,19 +33,24 @@ warnings.filterwarnings("ignore")
 # ============================================================
 # Config
 # ============================================================
-ROOT = "/Users/macbook/Library/CloudStorage/GoogleDrive-jason.karpeles@pmg.com/My Drive/Projects/Beyond Visible Spectrum"
-OUT_DIR = os.path.join(ROOT, "output")
-N_FOLDS = 5
-SEED = 42
+def parse_args():
+    parser = argparse.ArgumentParser(description="Beyond Visible Spectrum — GBM ensemble classifier")
+    parser.add_argument("--data-dir", type=str, default=".",
+                        help="Root directory containing train/ and val/ subdirectories (default: current directory)")
+    parser.add_argument("--output-dir", type=str, default=None,
+                        help="Directory to save submission CSVs (default: <data-dir>/output)")
+    parser.add_argument("--n-folds", type=int, default=5)
+    parser.add_argument("--seed", type=int, default=42)
+    return parser.parse_args()
+
+N_FOLDS = 5   # overridden by args at runtime
+SEED = 42     # overridden by args at runtime
 HS_DROP_FIRST = 10
 HS_DROP_LAST = 14
 
 LABELS = ["Health", "Rust", "Other"]
 LBL2ID = {k: i for i, k in enumerate(LABELS)}
 ID2LBL = {i: k for k, i in LBL2ID.items()}
-
-os.makedirs(OUT_DIR, exist_ok=True)
-np.random.seed(SEED)
 
 
 # ============================================================
@@ -403,6 +409,18 @@ def extract_all_features(row):
 # Main
 # ============================================================
 def main():
+    args = parse_args()
+    ROOT = os.path.abspath(args.data_dir)
+    OUT_DIR = args.output_dir if args.output_dir else os.path.join(ROOT, "output")
+    os.makedirs(OUT_DIR, exist_ok=True)
+
+    global N_FOLDS, SEED
+    N_FOLDS = args.n_folds
+    SEED = args.seed
+    np.random.seed(SEED)
+
+    print(f"Data directory : {ROOT}")
+    print(f"Output directory: {OUT_DIR}")
     print("Building data index...")
     train_idx = build_index(ROOT, "train")
     val_idx = build_index(ROOT, "val")
